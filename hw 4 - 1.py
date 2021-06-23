@@ -2,10 +2,7 @@
 # В расчете необходимо использовать формулу: (выработка в часах * ставка в час) + премия.
 # Для выполнения расчета для конкретных значений необходимо запускать скрипт с параметрами.
 
-def salary():
-    x = float(input('Введите количество отработанных часов: '))
-    y = float(input('Ставка в час: '))
-    c = float(input('Премия: '))
-    pay = x * y
-    return pay + c
-print(f'Размер заработной платы составил: {salary()} руб.')
+from sys import argv
+script_name, hours, rate_per_hour, bonus = argv
+hours, rate_per_hour, bonus = map(int, argv[1:])
+print("Salary: ", hours * rate_per_hour + bonus, "руб.")
