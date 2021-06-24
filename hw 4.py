@@ -28,6 +28,91 @@ print("New list: ", new_lst)
 new = [i for i in range(20, 240) if i % 21 == 0]
 # print(new)
 
+# 4. Представлен список чисел. Определить элементы списка, не имеющие повторений.
+# Сформировать итоговый массив чисел, соответствующих требованию.
+# Элементы вывести в порядке их следования в исходном списке.
+# Для выполнения задания обязательно использовать генератор.
+# Пример исходного списка: [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11].
+# Результат: [23, 1, 3, 10, 4, 11]
+
+from itertools import count
+lst = [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]
+"""первый / не правильный вариант"""
+# new_lst = []
+# for i in lst:
+#     if lst.count(i) == 1:
+#         new_lst.append(i)
+
+new_lst = []
+for el in count():
+    """тут если вставить lst будет ошибка на итерацию. если оставить так, то цикл вечный. как пройти список используя count?"""
+    if el == 1 in lst.count(1):  
+        new_lst.append(el)
+
+print('first list: ', lst)
+print('result list: ', new_lst)
+
+"""c 5 завал полный"""
+# 5. Реализовать формирование списка, используя функцию range() и возможности генератора.
+# В список должны войти четные числа от 100 до 1000 (включая границы).
+# Необходимо получить результат вычисления произведения всех элементов списка.
+# Подсказка: использовать функцию reduce().
+
+
+import math
+from itertools import count
+from random import randrange
+from functools import reduce
+def multiplication():
+new = []
+for el in count(100, 2):
+    if el > 1000:
+        break
+    else:
+        new.append(el)
+        print(new)
+multiplication() int
+
+# print(reduce(multiplication, [i, b]))
+# print(functools.reduce(lambda a, b : a * b, new))
+
+    # lst1 = [randrange(99, 1001, 1)]
+    # new = []
+    # for i in lst1:
+    #     i * (i+1)
+    #     new.insert(i)
+# print(reduce(multiplication, [a, b]))
+
+# 5. Реализовать формирование списка, используя функцию range() и возможности генератора.
+# В список должны войти четные числа от 100 до 1000 (включая границы).
+# Необходимо получить результат вычисления произведения всех элементов списка.
+# Подсказка: использовать функцию reduce().
+
+
+import math
+from itertools import count
+from random import randrange
+from functools import reduce
+def multiplication():
+new = []
+for el in count(100, 2):
+    if el > 1000:
+        break
+    else:
+        new.append(el)
+        print(new)
+multiplication() int
+
+# print(reduce(multiplication, [i, b]))
+# print(functools.reduce(lambda a, b : a * b, new))
+
+    # lst1 = [randrange(99, 1001, 1)]
+    # new = []
+    # for i in lst1:
+    #     i * (i+1)
+    #     new.insert(i)
+# print(reduce(multiplication, [a, b]))
+
 # 6. Реализовать два небольших скрипта:
 # а) итератор, генерирующий целые числа, начиная с указанного,
 # б) итератор, повторяющий элементы некоторого списка, определенного заранее.
@@ -40,6 +125,7 @@ new = [i for i in range(20, 240) if i % 21 == 0]
 
 import time
 from itertools import count
+
 print('итератор "a"')
 # i = int(input('>>>'))
 i = int(2)
@@ -48,7 +134,9 @@ for el in count(i):
         break
     else:
         print(el)
+        
 time.sleep(2)
+
 print('итератор "b"')
 from itertools import cycle
 lst = [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]
