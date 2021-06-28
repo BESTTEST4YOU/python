@@ -61,15 +61,20 @@ print(myfunc2(3, -3))
 # Если специальный символ введен после нескольких чисел, то вначале нужно добавить сумму этих чисел к полученной
 # ранее сумме и после этого завершить программу.
 
-def myfunc(*args):
+def myfunc():
     sum = 0
     while True:
-        n = list(input('Input: ').split())
-        if n == '#':
-            break
-        else:
-            for n in args:
-                sum +=n
+        li = input('Input: ').split()
+        for num in li:
+            if num == 'stop':
+                return sum
+            else:
+                try:
+                    sum += int(num)
+                except ValueError:
+                    print('For exit - stop')
+        print('Summa = ', sum)
+print(myfunc())
 
 # 6. Реализовать функцию int_func(), принимающую слово из маленьких латинских
 # букв и возвращающую его же, но с прописной первой буквой. Например, print(int_func(‘text’)) -> Text.
