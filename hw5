@@ -2,6 +2,20 @@
 # построчно данные, вводимые пользователем. Об окончании ввода
 # данных свидетельствует пустая строка.
 
+f = open('test.txt', 'w')
+line = input('Input: \n')
+while line:
+    f.writelines(line)
+    line = input('Input: \n')
+    if not line:
+        break
+f.close()
+
+f = open('test.txt', 'r')
+content = f.readlines()
+print(content)
+f.close()
+
 
 # 2. Создать текстовый файл (не программно), сохранить в нем
 # несколько строк, выполнить подсчет количества строк,
