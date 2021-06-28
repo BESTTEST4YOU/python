@@ -36,15 +36,15 @@ words.close()
 
 with open('5.3.txt', 'r') as salary:
     sal = []
-    poor = []
+    avsal = []
     lst = salary.read().split('\n')
     for i in lst:
         i = i.split()
         if int(i[1]) < 20000:
-           poor.append(i[0])
+           avsal.append(i[0])
         sal.append(i[1])
         avsalary = round(sum(map(int, sal)) / len(sal), 1)
-print(f'Salary > 20.000 {poor}\nAverage salary = {avsalary}')
+print(f'Salary > 20.000 {avsal}\nAverage salary = {avsalary}')
 
 # 4. Создать (не программно) текстовый файл со следующим содержимым:
 # One — 1
@@ -56,6 +56,14 @@ print(f'Salary > 20.000 {poor}\nAverage salary = {avsalary}')
 # При этом английские числительные должны заменяться на русские.
 # Новый блок строк должен записываться в новый текстовый файл.
 
+rus = {'One': 'Один', 'Two': 'Два', 'Three': 'Три', 'Four': 'Четыре'}
+second = []
+with open('5.4.txt', 'r', encoding='utf-8') as first:
+    for i in first:
+        i = i.split(' ', 1)
+        second.append(rus[i[0]] + '  ' + i[1])
+with open('5.4.1.txt', 'w') as file_obj_2:
+    file_obj_2.writelines(second)
 
 # 5. Создать (программно) текстовый файл, записать в него программно набор чисел,
 # разделенных пробелами. Программа должна подсчитывать сумму чисел в файле
