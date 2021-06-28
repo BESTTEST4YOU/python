@@ -85,7 +85,14 @@ print(myfunc())
 # Необходимо использовать написанную ранее функцию int_func().
 
 def int_func():
-    w = input("Input: ")
-    w = w.title()
-    return w
-print(int_func())
+    w = input("Input: ").split()
+    for word in w:
+        lenn = 0
+        for ch in word:
+            if 97 <= ord(ch) <= 122:
+                lenn += 1
+        if lenn == len(word):
+            print(word.title())
+        else:
+            print(f'Error : {word}')
+int_func()
