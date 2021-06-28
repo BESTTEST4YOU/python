@@ -56,12 +56,12 @@ print(f'Salary > 20.000 {avsal}\nAverage salary = {avsalary}')
 # При этом английские числительные должны заменяться на русские.
 # Новый блок строк должен записываться в новый текстовый файл.
 
-rus = {'One': 'Один', 'Two': 'Два', 'Three': 'Три', 'Four': 'Четыре'}
+res = {'One': 'Один', 'Two': 'Два', 'Three': 'Три', 'Four': 'Четыре'}
 second = []
 with open('5.4.txt', 'r', encoding='utf-8') as first:
     for i in first:
         i = i.split(' ', 1)
-        second.append(rus[i[0]] + '  ' + i[1])
+        second.append(res[i[0]] + '  ' + i[1])
 with open('5.4.1.txt', 'w') as file_obj_2:
     file_obj_2.writelines(second)
 
@@ -69,6 +69,17 @@ with open('5.4.1.txt', 'w') as file_obj_2:
 # разделенных пробелами. Программа должна подсчитывать сумму чисел в файле
 # и выводить ее на экран.
 
+def my_func():
+    while True:
+        try:
+            with open('5.5.txt', 'w+') as file_obj:
+                line = input('Input numbers separated by a space\n')
+                file_obj.writelines(line)
+                numb = line.split()
+                print(sum(map(int, numb)))
+        except ValueError:
+            print('Error')
+my_func()
 
 # 6. Необходимо создать (не программно) текстовый файл, где каждая строка
 # описывает учебный предмет и наличие лекционных, практических и
@@ -103,3 +114,32 @@ with open('5.4.1.txt', 'w') as file_obj_2:
 # {"average_profit": 2000}]
 #
 # Подсказка: использовать менеджеры контекста.
+
+import json
+profit = {}
+pr = {}
+prof = 0
+prof_aver = 0
+i = 0
+with open('5.7.txt', 'r') as file:
+    for line in file:
+        name, firm, earning, damage = line.split()
+        profit[name] = int(earning) - int(damage)
+        if profit.setdefault(name) >= 0:
+            prof = prof + profit.setdefault(name)
+            i += 1
+    if i != 0:
+        prof_aver = prof / i
+        print(f'Прибыль средняя - {prof_aver:.2f}')
+    else:
+        print(f'Прибыль средняя - отсутсвует. Все работают в убыток')
+    pr = {'средняя прибыль': round(prof_aver)}
+    profit.update(pr)
+    print(f'Прибыль каждой компании - {profit}')
+
+with open('5.7.json', 'w') as write_js:
+    json.dump(profit, write_js)
+
+    js_str = json.dumps(profit)
+    print(f'Создан файл с расширением json со следующим содержимым: \n '
+          f' {js_str}')
