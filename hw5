@@ -2,7 +2,7 @@
 # построчно данные, вводимые пользователем. Об окончании ввода
 # данных свидетельствует пустая строка.
 
-f = open('test.txt', 'w')
+f = open('5.1.txt', 'w')
 line = input('Input: \n')
 while line:
     f.writelines(line)
@@ -11,7 +11,7 @@ while line:
         break
 f.close()
 
-f = open('test.txt', 'r')
+f = open('5.1.txt', 'r')
 content = f.readlines()
 print(content)
 f.close()
