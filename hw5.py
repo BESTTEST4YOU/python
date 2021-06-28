@@ -16,7 +16,6 @@ content = f.readlines()
 print(content)
 f.close()
 
-
 # 2. Создать текстовый файл (не программно), сохранить в нем
 # несколько строк, выполнить подсчет количества строк,
 # количества слов в каждой строке.
@@ -35,6 +34,17 @@ words.close()
 # имеет оклад менее 20 тыс., вывести фамилии этих сотрудников.
 # Выполнить подсчет средней величины дохода сотрудников.
 
+with open('5.3.txt', 'r') as salary:
+    sal = []
+    poor = []
+    lst = salary.read().split('\n')
+    for i in lst:
+        i = i.split()
+        if int(i[1]) < 20000:
+           poor.append(i[0])
+        sal.append(i[1])
+        avsalary = round(sum(map(int, sal)) / len(sal), 1)
+print(f'Salary > 20.000 {poor}\nAverage salary = {avsalary}')
 
 # 4. Создать (не программно) текстовый файл со следующим содержимым:
 # One — 1
