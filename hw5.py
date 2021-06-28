@@ -21,13 +21,14 @@ f.close()
 # несколько строк, выполнить подсчет количества строк,
 # количества слов в каждой строке.
 
-f = open('5.2.txt', 'w', encoding='utf-8')
-for i in f:
-    input(i)
-f.close()
-
-print()
-
+str = open('5.2.txt', 'r')
+content = str.readlines()
+print(f'str: {len(content)}')
+words = open('5.2.txt', 'r')
+content = words.read()
+content = content.split()
+print(f'words: {len(content)}')
+words.close()
 
 # 3. Создать текстовый файл (не программно), построчно записать фамилии
 # сотрудников и величину их окладов. Определить, кто из сотрудников
