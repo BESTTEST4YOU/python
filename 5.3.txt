@@ -1,0 +1,9 @@
+Patterson 21000
+Carmack 22000
+Knut 19000
+Rossum 19500
+Gosling 23500
+Kernighan 18700
+Thompson 20500
+Wirth 22500
+Curtis 19300
