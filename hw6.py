@@ -7,9 +7,13 @@
 # создав экземпляр и вызвав описанный метод.
 
 from time import sleep
+
+
 class TrafficLight:
     __color = ['Красный', 'Желтый', 'Зеленый']
-    def running(self):
+
+    @staticmethod
+    def running():
         i = 0
         while i != 3:
             print(TrafficLight.__color[i])
@@ -20,6 +24,8 @@ class TrafficLight:
             elif i == 2:
                 sleep(5)
             i += 1
+
+
 t = TrafficLight()
 t.running()
 
@@ -41,7 +47,8 @@ class Road:
 
     def asphalt_mass(self):
         res = self._length * self._width * self.weight * self.height / 1000
-        print(f'Для покрытия всей дороги неободимо {round(res)} асфальта')
+        print(f'Для выполнения работ нужно: {round(res)} асфальта')
+
 
 r = Road(5000, 20)
 r.asphalt_mass()
