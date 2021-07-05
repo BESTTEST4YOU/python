@@ -85,3 +85,80 @@ class Position(Worker):
 p = Position('Myers', 'Glenford', 'Computer scientist', '100000', '10000')
 print(p.get_full_name(), p.get_total_income())
 
+# 4. Реализуйте базовый класс Car. У данного класса должны быть следующие атрибуты:
+# speed, color, name, is_police (булево). А также методы: go, stop, turn(direction),
+# которые должны сообщать, что машина поехала, остановилась, повернула (куда).
+# Опишите несколько дочерних классов: TownCar, SportCar, WorkCar, PoliceCar.
+# Добавьте в базовый класс метод show_speed, который должен показывать текущую скорость автомобиля.
+# Для классов TownCar и WorkCar переопределите метод show_speed.
+# При значении скорости свыше 60 (TownCar) и 40 (WorkCar) должно выводиться сообщение о превышении скорости.
+# Создайте экземпляры классов, передайте значения атрибутов.
+# Выполните доступ к атрибутам, выведите результат. Выполните вызов методов и также покажите результат.
+
+class Car:
+
+    def __init__(self, speed, color, name, is_police=False):
+        self.speed = speed
+        self.color = color
+        self.name = name
+        self.is_police = is_police
+
+    def go(self):
+        return f'{self.name}: go.'
+
+    def stop(self):
+        return f'\n{self.name}: stopped'
+
+    def turn(self, directions):
+        return f'\n{self.name} turned: {directions}'
+
+    def speed(self):
+        return f'speed is: {self.speed}'
+
+
+class TownCar(Car):
+    def rspeed(self):
+        if self.speed > 61:
+            return f'Speed is: {self.speed} - over speed!'
+        else:
+            return f'Speed is: {self.name} - ok'
+
+
+class SportCar(Car):
+    def rspeed(self):
+        if self.speed > 61:
+            return f'Speed is: {self.speed} - over speed!'
+        else:
+            return f'Speed is: ok'
+
+
+class WorkCar(Car):
+    @property
+    def rspeed(self):
+        if self.speed > 41:
+            return f'Speed is: {self.speed} - over speed!'
+        else:
+            return f'Speed is: ok'
+
+
+class PoliceCar(Car):
+    def rspeed(self):
+        if self.speed > 80:
+            return f'Speed is: {self.speed} - over speed!'
+        else:
+            return f'Speed is: ok'
+
+
+TownCar = TownCar(120, 'asphalt', 'KIA', False)
+print('\nTownCar:\n' + TownCar.go(), TownCar.rspeed(), TownCar.turn('left'), TownCar.stop())
+
+SportCar = SportCar(170, 'white', 'Porsche', False)
+print('\nSportCar:\n' + SportCar.go(), SportCar.rspeed(), SportCar.turn('right'))
+
+WorkCar = WorkCar(40, 'yellow', 'VW', False)
+print('\nWorkCar:\n' + WorkCar.go(), WorkCar.rspeed, WorkCar.turn('left'), WorkCar.stop())
+
+PoliceCar = PoliceCar(80, 'black', 'Ford', True)
+print('\nPoliceCar:\n' + PoliceCar.go(), PoliceCar.rspeed(), PoliceCar.turn('right'))
+
+
