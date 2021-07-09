@@ -3,10 +3,18 @@
 # Для выполнения расчета для конкретных значений необходимо запускать скрипт с параметрами.
 
 from sys import argv
-script_name, hours, rate_per_hour, bonus = argv
-hours, rate_per_hour, bonus = map(int, argv[1:])
-print("Salary: ", hours * rate_per_hour + bonus, "руб.")
 
+
+def salary():
+    try:
+        script_name, hours, rate_per_hour, bonus = argv
+        hours, rate_per_hour, bonus = map(int, argv[1:])
+        print("Salary: ", hours * rate_per_hour + bonus, "руб.")
+    except ValueError:
+        print('Error')
+
+
+salary()
 
 # 2. Представлен список чисел. Необходимо вывести элементы исходного списка,
 # значения которых больше предыдущего элемента.
@@ -21,12 +29,16 @@ new_lst = [number for i, number in enumerate(lst) if i > 0 and lst[i] > lst[i - 
 # print(f"Old list: {lst}")
 print("New list: ", new_lst)
 
+#second var:
+li = [300, 2, 12, 44, 1, 1, 4, 10, 7, 1, 78, 123, 55]
+new = [li[i] for i in range(1, len(li)) if li[i] > li[i - 1]]
+print(new)
 
 # 3. Для чисел в пределах от 20 до 240 найти числа, кратные 20 или 21.
 # Необходимо решить задание в одну строку. # Подсказка: использовать функцию range() и генератор.
 
-new = [i for i in range(20, 240) if i % 21 == 0]
-# print(new)
+new = [i for i in range(20, 240) if i % 20 == 0 or i % 21 == 0]
+print(new)
 
 # 4. Представлен список чисел. Определить элементы списка, не имеющие повторений.
 # Сформировать итоговый массив чисел, соответствующих требованию.
@@ -35,83 +47,30 @@ new = [i for i in range(20, 240) if i % 21 == 0]
 # Пример исходного списка: [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11].
 # Результат: [23, 1, 3, 10, 4, 11]
 
-from itertools import count
 lst = [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]
-"""первый / не правильный вариант"""
-# new_lst = []
-# for i in lst:
-#     if lst.count(i) == 1:
-#         new_lst.append(i)
-
-new_lst = []
-for el in count():
-    """тут если вставить lst будет ошибка на итерацию. если оставить так, то цикл вечный. как пройти список используя count?"""
-    if el == 1 in lst.count(1):  
-        new_lst.append(el)
-
+new_lst = [i for i in lst if lst.count(i) == 1]
 print('first list: ', lst)
 print('result list: ', new_lst)
 
-"""c 5 завал полный"""
 # 5. Реализовать формирование списка, используя функцию range() и возможности генератора.
 # В список должны войти четные числа от 100 до 1000 (включая границы).
 # Необходимо получить результат вычисления произведения всех элементов списка.
 # Подсказка: использовать функцию reduce().
 
+new = [i for i in range(100, 1001, 2)]
+print(new)
 
-import math
-from itertools import count
-from random import randrange
+
+def multiplication(arg1, arg2):
+    return arg1 * arg2
+
+
 from functools import reduce
-def multiplication():
-new = []
-for el in count(100, 2):
-    if el > 1000:
-        break
-    else:
-        new.append(el)
-        print(new)
-multiplication() int
 
-# print(reduce(multiplication, [i, b]))
-# print(functools.reduce(lambda a, b : a * b, new))
-
-    # lst1 = [randrange(99, 1001, 1)]
-    # new = []
-    # for i in lst1:
-    #     i * (i+1)
-    #     new.insert(i)
-# print(reduce(multiplication, [a, b]))
-
-# 5. Реализовать формирование списка, используя функцию range() и возможности генератора.
-# В список должны войти четные числа от 100 до 1000 (включая границы).
-# Необходимо получить результат вычисления произведения всех элементов списка.
-# Подсказка: использовать функцию reduce().
-
-
-import math
-from itertools import count
-from random import randrange
-from functools import reduce
-def multiplication():
-new = []
-for el in count(100, 2):
-    if el > 1000:
-        break
-    else:
-        new.append(el)
-        print(new)
-multiplication() int
-
-# print(reduce(multiplication, [i, b]))
-# print(functools.reduce(lambda a, b : a * b, new))
-
-    # lst1 = [randrange(99, 1001, 1)]
-    # new = []
-    # for i in lst1:
-    #     i * (i+1)
-    #     new.insert(i)
-# print(reduce(multiplication, [a, b]))
+li = [v for v in range(100, 1001) if v % 2 == 0]
+result = reduce(lambda a, b: a * b, li)
+print(result)
+print('end')
 
 # 6. Реализовать два небольших скрипта:
 # а) итератор, генерирующий целые числа, начиная с указанного,
