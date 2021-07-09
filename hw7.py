@@ -1,3 +1,4 @@
+
 # 1. Реализовать класс Matrix (матрица). Обеспечить перегрузку конструктора класса
 # (метод __init__()), который должен принимать данные (список списков) для формирования матрицы.
 # Подсказка: матрица — система некоторых математических величин, расположенных в виде прямоугольной схемы.
@@ -32,6 +33,7 @@ matrix = Matrix([[3, 3, 1], [2, 2, 1], [4, 4, 1], [5, 5, 1]])
 matrix2 = Matrix([[6, 6, 2], [7, 7, 2], [8, 8, 2], [9, 9, 2]])
 print(matrix.__add__(matrix2))
 
+
 # 2. Реализовать проект расчета суммарного расхода ткани на производство одежды.
 # Основная сущность (класс) этого проекта — одежда, которая может иметь определенное название.
 # К типам одежды в этом проекте относятся пальто и костюм.
@@ -44,6 +46,44 @@ print(matrix.__add__(matrix2))
 # реализовать абстрактные классы для основных классов проекта,
 # проверить на практике работу декоратора @property.
 
+from abc import ABC, abstractmethod
+
+
+class Clothes(ABC):
+
+    def __init__(self, sizes):
+        self.sizes = sizes
+
+    @property
+    def expense(self):
+        return f'textile_spent: {self.sizes / 6.5 + 0.5 + 2 * self.sizes + 0.3  :.2f)}'
+
+    @abstractmethod
+    def abstract(self):
+        return 'abstract'
+
+
+class Coat(Clothes):
+    def consumption(self):
+        return f'For coat: {self.sizes / 6.5 + 0.5 :.2f} textile'
+
+    def abstract(self):
+        return 'abstract'
+
+
+class Suit(Clothes):
+    def consumption(self):
+        return f'For suit: {2 * self.sizes + 0.3 :.2f} textile'
+
+    def abstract(self):
+        pass
+
+
+coat = Coat(400)
+suit = Suit(55)
+clothes = Clothes
+print(coat.consumption())
+print(suit.consumption())
 
 
 # 3. Реализовать программу работы с органическими клетками. Необходимо создать класс Клетка.
@@ -72,3 +112,36 @@ print(matrix.__add__(matrix2))
 # Тогда метод make_order() вернет строку: *****\n*****\n**.
 # Или, количество ячеек клетки равняется 15, количество ячеек в ряду —
 # 5. Тогда метод make_order() вернет строку: *****\n*****\n*****.
+
+class Cell:
+    def __init__(self, quantity):
+        self.quantity = int(quantity)
+
+    def __add__(self, other):
+        return f'SUM: {self.quantity + other.quantity}'
+
+    def __sub__(self, other):
+        sub = self.quantity - other.quantity
+        return f'MINUS: {sub}' if sub > 0 else 'SIZE < 0'
+
+    def __truediv__(self, other):
+        return self.quantity // other.quantity
+
+    def __mul__(self, other):
+        return self.quantity * other.quantity
+
+    def make_order(self, row):
+        result = ''
+        for i in range(int(self.quantity / row)):
+            result += '*' * row + '\n'
+        result += '*' * (self.quantity % row) + '\n'
+        return result
+
+
+cell = Cell(22)
+cell_2 = Cell(4)
+print(cell + cell_2)
+print(cell - cell_2)
+print(cell / cell_2)
+print(cell * cell_2)
+print(cell.make_order(9))
