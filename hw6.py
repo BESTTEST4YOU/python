@@ -10,7 +10,7 @@ from time import sleep
 
 
 class TrafficLight:
-    __color = ['Красный', 'Желтый', 'Зеленый']
+    __color = ['RED', 'YELLOW', 'GREEN']
 
     @staticmethod
     def running():
@@ -28,6 +28,36 @@ class TrafficLight:
 
 t = TrafficLight()
 t.running()
+
+#second var:
+from time import sleep
+class TrafficLight:
+    __color = ['Красный']
+
+    def running(self):
+        print('RED')
+        sleep(7)
+        print('YELLOW')
+        sleep(2)
+        print('GREEN')
+        sleep(3)
+traf_light = TrafficLight()
+traf_light.running()
+
+#another var:
+from time import sleep
+class TrafficLight:
+    __color = ['RED', 'YELLOW', 'GREEN']
+
+    def running(self):
+        print('горит ', self.__color[0])
+        sleep(7)
+        print('горит ', self.__color[1])
+        sleep(2)
+        print('горит ', self.__color[2])
+        sleep(3)
+traf_light = TrafficLight()
+traf_light.running()
 
 # 2. Реализовать класс Road (дорога), в котором определить атрибуты:
 # length (длина), width (ширина). Значения данных атрибутов должны передаваться при создании
@@ -52,6 +82,22 @@ class Road:
 
 r = Road(5000, 20)
 r.asphalt_mass()
+
+
+# second var:
+
+class Road:
+    def __init__(self, length, width):
+        self._length = length
+        self._width = width
+
+    def calc(self):
+        return f'Масса равна: {(self._length * self._width * 25 * 0.05) / 1000} т'
+
+
+road1 = Road(5000, 20)
+print(road1.calc())
+
 
 # 3. Реализовать базовый класс Worker (работник), в котором определить атрибуты:
 # name, surname, position (должность), income (доход).
@@ -84,6 +130,24 @@ class Position(Worker):
 
 p = Position('Myers', 'Glenford', 'Computer scientist', '100000', '10000')
 print(p.get_full_name(), p.get_total_income())
+
+#second var:
+class Worker:
+    def __init__(self, name, surname, position, wage, bonus):
+        self.name = name
+        self.surname = surname
+        self.position = position
+        self._income = {'wage': wage, 'bonus': bonus}
+class Position(Worker):
+    def get_full_name(self):
+        return f'{self.name} {self.surname}'
+
+    @property
+    def get_total_income(self):
+        return f'{sum(self._income.values())}'
+
+worker1 = Position('Myers', 'Glenford', 'Computer scientist', 100000, 10000)
+print(worker1.get_full_name(), worker1.get_total_income)
 
 # 4. Реализуйте базовый класс Car. У данного класса должны быть следующие атрибуты:
 # speed, color, name, is_police (булево). А также методы: go, stop, turn(direction),
@@ -160,6 +224,64 @@ print('\nWorkCar:\n' + WorkCar.go(), WorkCar.rspeed, WorkCar.turn('left'), WorkC
 
 PoliceCar = PoliceCar(80, 'black', 'Ford', True)
 print('\nPoliceCar:\n' + PoliceCar.go(), PoliceCar.rspeed(), PoliceCar.turn('right'))
+
+# second var:
+
+class Car:
+
+    def __init__(self, name, color, speed, is_police=False):
+        self.speed = speed
+        self.color = color
+        self.name = name
+        self.is_police = is_police
+        print(f'Новая машина: {self.name} цвет: {self.color} полиция? {self.is_police}')
+
+    def go(self):
+        print(f'Машина {self.name} поехала')
+
+    def stop(self):
+        print(f'Машина {self.name} остановилась')
+
+    def turn(self, direction):
+        print(f'Машина {self.name} поевернула {"налево" if direction == 0 else "нааправо"}')
+
+    def speed(self):
+        print(f'Машина {self.name} скорость {self.speed}')
+
+
+class TownCar(Car):
+    def speed(self):
+        print(
+            f'Машина {self.name} скорость {self.speed} {"Превышение скорости!" if self.speed > 60 else "Скорость нормальная"}')
+
+
+class WorkCar(Car):
+    def speed(self):
+        print(
+            f'Машина {self.name} скорость {self.speed} {"Превышение скорости!" if self.speed > 40 else "Скорость нормальная"}')
+
+
+class SportCar(Car):
+    pass
+
+
+class PoliceCar(Car):
+    def __init__(self, name, color, speed, is_police=True):
+        super().__init__(name, color, speed, is_police)
+
+
+town_car = TownCar('KIA', 'asphalt', 50)
+town_car.turn(0)
+town_car.speed()
+
+work_car = WorkCar('Truck', 'blue', 70)
+work_car.go()
+work_car.speed()
+
+police_car = PoliceCar('Police', 'white', 120)
+police_car.stop()
+police_car.speed()
+print(police_car.is_police)
 
 
 # 5. Реализовать класс Stationery (канцелярская принадлежность).
