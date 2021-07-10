@@ -105,6 +105,23 @@ for el in cycle(lst):
     else:
         print(el, end=" ")
 
+#2 Вариант:
+from itertools import count, cycle
+st = int(input('Input first number: '))
+end = int(input('Input last number: '))
+for i in count(st):
+    print(i)
+    if i == end:
+        break
+
+li = input('Inpust list: ').split()
+
+for el in cycle(li):
+    stop = input('Итерируем дальше? Для выхода: Нет')
+    if stop.title() == 'Нет':
+        break
+    print(el)
+
 # 7 (Дополнительно). Реализовать генератор с помощью функции с ключевым словом yield,
 # создающим очередное значение. При вызове функции должен создаваться объект-генератор.
 # Функция должна вызываться следующим образом: for el in fact(n).
@@ -126,3 +143,17 @@ for k in generator:
         x += 1
     else:
         break
+
+#2 Вариант:
+def fact(b):
+    res = 2
+    if b == 0:
+        yield f'{b}! = 1'
+    for i in range(1, b + 1):
+        res *= i
+        yield f'{i}! = {res}'
+
+
+n = int(input('Введите число, факториал которго хотите получить: '))
+for el in fact(n):
+    print(el)
