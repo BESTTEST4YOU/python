@@ -5,6 +5,41 @@
 # должен проводить валидацию числа, месяца и года (например, месяц — от 1 до 12).
 # Проверить работу полученной структуры на реальных данных.
 
+# 1. Реализовать класс «Дата», функция-конструктор которого должна принимать
+# дату в виде строки формата «день-месяц-год». В рамках класса реализовать два метода.
+# Первый, с декоратором @classmethod, должен извлекать число, месяц,
+# год и преобразовывать их тип к типу «Число». Второй, с декоратором @staticmethod,
+# должен проводить валидацию числа, месяца и года (например, месяц — от 1 до 12).
+# Проверить работу полученной структуры на реальных данных.
+
+class Date(object):
+
+    def __init__(self, day=0, month=0, year=0):
+        self.day = day
+        self.month = month
+        self.year = year
+
+    @classmethod
+    def string(cls, string_date):
+        day, month, year = map(int, string_date.split('-'))
+        date1 = cls(day, month, year)
+        print(*string_date)
+        return date1
+
+    @staticmethod
+    def valid_date(string_date):
+        day, month, year = map(int, string_date.split('-'))
+        day = int(input())
+        if day <= 31 and day != 0 and month <= 12 and month != 0 and year <= 3999:
+            print(*string_date)
+            return day, month, year
+        else:
+            print('Error')
+
+
+d = '11-07-2021'
+date = Date.string(d)
+second_date = Date.valid_date(d)
 
 # 2. Создайте собственный класс-исключение, обрабатывающий ситуацию деления на нуль.
 # Проверьте его работу на данных, вводимых пользователем. При вводе пользователем нуля
