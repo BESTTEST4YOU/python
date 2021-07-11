@@ -72,6 +72,28 @@ n.division_by_zero()
 # и отобразить соответствующее сообщение.
 # При этом работа скрипта не должна завершаться.
 
+class MyExcept:
+    def __init__(self, *args):
+        self.lst = []
+
+    def input_number(self):
+        print('Input the numbers through the "ENTER":')
+        while True:
+            try:
+                res = int(input())
+                self.lst.append(res)
+                print(f'List - {self.lst}')
+            except ValueError:
+                print(f'Not a number')
+                stop = input(f'Continue? Y/N \n').upper()
+                if stop == 'Y':
+                    print(n.input_number().upper())
+                elif stop == 'N':
+                    return f'END'
+
+
+n = MyExcept()
+print(n.input_number())
 
 # 4. Начните работу над проектом «Склад оргтехники». Создайте класс,
 # описывающий склад. А также класс «Оргтехника», который будет базовым для
