@@ -39,6 +39,21 @@ second_date = Date.valid_date(d)
 # в качестве делителя программа должна корректно обработать эту ситуацию
 # и не завершиться с ошибкой.
 
+class Exception_D(Exception):
+
+    def division_by_zero(self):
+        a = int(input('Input first number: '))
+        b = int(input('Input second number: '))
+        try:
+            res = round(a / b, 1)
+        except ZeroDivisionError:
+            print(f"{a} / {b} -  division by 0 is not possible\n")
+        else:
+            print(f"{a} / {b} = {res} \n")
+
+
+n = Exception_D()
+n.division_by_zero()
 
 
 # # 3. Создайте собственный класс-исключение, который должен проверять содержимое
