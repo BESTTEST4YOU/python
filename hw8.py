@@ -100,3 +100,63 @@ print(n.input_number())
 # классов-наследников. Эти классы — конкретные типы оргтехники (принтер, сканер, ксерокс).
 # В базовом классе определить параметры, общие для приведенных типов.
 # В классах-наследниках реализовать параметры, уникальные для каждого типа оргтехники.
+
+    def __str__(self):
+        return "\tbrand: {} \tID: {}".format(self.brand, self.id)
+
+
+class PC(OfficeEquipment):
+    amount_sc = 0
+
+    def __init__(self, brand, id, wifi):
+        super().__init__(brand, id)
+        self.wifi = wifi
+        PC.amount_sc += 1
+
+    @staticmethod
+    def name():
+        return 'PC'
+
+    def wifi(self):
+        return self.wifi
+
+    def __str__(self):
+        return "\tbrand: {} \tID: {} \tWi-Fi: {}".format(self.brand, self.id, self.wifi)
+
+
+class Projector(OfficeEquipment):
+    amount_x = 0
+
+    def __init__(self, brand, id, projector_wi_fi):
+        super().__init__(brand, id)
+        self.projector_wi_fi = projector_wi_fi
+        Projector.amount_x += 1
+
+    @staticmethod
+    def name():
+        return 'Projector'
+
+    def wi_fi_module(self):
+        return self.projector_wi_fi
+
+    def __str__(self):
+        return "\tbrand: {} \tID: {}   \tWi-Fi: {}".format(self.brand, self.id, self.projector_wi_fi)
+
+
+p = Mfu('Canon', 'DX C5800')
+p2 = Mfu('Canon', 'MF832Cdw')
+print(p.name(), p.amount_pr, 'qty.')
+print(p.__str__())
+print(p2.__str__())
+
+s = PC('ASUS', 'GT15CK-RU018T', 'not')
+s2 = PC('ASUS', 'GT15CK-RU018T', 'got')
+s3 = PC('ASUS', 'GT15CK-RU018T', 'got')
+print(s.name(), s.amount_sc, "qty.")
+print(s.__str__())
+print(s2.__str__())
+print(s3.__str__())
+
+x = Projector('Optoma', 'ZH406-W', 'got')
+print(x.name(), x.amount_x, 'qty.')
+print(x.__str__())
