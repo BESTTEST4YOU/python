@@ -8,3 +8,16 @@
 [lesson №7](https://github.com/Mybono/python/blob/lesson7/hw7.py)
 [lesson №8](https://github.com/Mybono/python/blob/lesson8/hw8.py)
 </ul>
+
+
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Ссылки</title>
+ </head>
+ <body>
+  <p><a href="http://htmlbook.ru">Обычная ссылка на сайт www.htmlbook.ru</a></p>
+  <p><a href="http://htmlbook.ru" target="_blank">Ссылка 
+  открывает новое окно на сайт www.htmlbook.ru</a></p> 
+ </body>
+</html>
