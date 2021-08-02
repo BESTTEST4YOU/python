@@ -1,4 +1,4 @@
-### HW for Python basik course - GEEK BRAINS
+### [HW Python Basics - GEEK BRAINS](https://gb.ru/certificates/1321970.en)
 
 [lesson №1](https://github.com/Mybono/python/blob/lesson1/hw1.py)
 
