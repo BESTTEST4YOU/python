@@ -16,4 +16,6 @@
 
 + [lesson №8](https://github.com/Mybono/python/blob/lesson8/hw8.py)
 
+![avatar](https://telegra.ph/file/200813d0d8afaffa0a0bb.jpg)
+
 
