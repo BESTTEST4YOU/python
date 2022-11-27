@@ -1,11 +1,11 @@
-#1. Поработайте с переменными, создайте несколько, выведите на экран,
-# запросите у пользователя несколько чисел и строк и сохраните в переменные,
-# выведите на экран.
+#1. Work with variables, create a few, display,
+# prompt the user for some numbers and strings and store them in variables,
+# display.
 
-a = int(input('Введите число №1: '))
-b = int(input('Введите число №2: '))
-t = str(input('Введите буквы: '))
-print('Вы ввели: ', a, b, t)
+a = int(input('Input number №1: '))
+b = int(input('Input number №2: '))
+t = str(input('Input symbols: '))
+print('Output: ', a, b, t)
 
 #2. Пользователь вводит время в секундах.
 # Переведите время в часы, минуты и секунды и выведите в формате чч:мм:сс.
